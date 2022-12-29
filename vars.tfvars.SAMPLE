@@ -1,0 +1,16 @@
+
+lbr_image_ocid      = "<ocid-of-the-lbr-image-you-want-to-use>" 
+lbr_subnet_ocid     = "<ocid-of-the-public-subnet-for-lbr>" 
+
+worker_image_ocid   = "<ocid-of-the-worker-image-you-want-to-use>" 
+worker_count        = "<your-count-here>"
+worker_subnet_ocid  = "<ocid-of-the-private-subnet-for-workers>" 
+
+region              = "<region-identifier>"
+tenancy_ocid        = "<your-tenancy-ocid>"
+compartment_ocid    = "<yoru-compartment-ocid>"
+user_ocid           = "<your-user-ocid>"
+fingerprint         = "<your-api-key-fingerprint>"
+private_key_path    = "<path-to-uour-api-key>"
+
+ssh_public_key      = "<contents of your public key here>"
