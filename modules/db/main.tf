@@ -2,7 +2,7 @@
 
 resource "oci_mysql_mysql_db_system" "innodb_cluster" {
     # Required
-    admin_password      = local.password 
+    admin_password      = base64decode(var.db_password_base64) 
     admin_username      = "admin"
     availability_domain = var.avadom_name
     compartment_id      = var.compartment_ocid

@@ -4,6 +4,9 @@ locals {
   # host creation helpers -- uncomment if needed 
   # user_data_base64_standard = filebase64("${path.module}/templates/standard.tpl")
    
+  # perform illegal op if encoding of password is not BASE64
+  circuitbraker = data.oci_secrets_secretbundle.db_password.secret_bundle_content[0]["content_type"] == "BASE64" ? 1/1 : 1/0
+
   # not used for now, but can be used for distribution across ads
   avadom_list  = data.oci_identity_availability_domains.ads.availability_domains
   avadom_count = length(local.avadom_list)

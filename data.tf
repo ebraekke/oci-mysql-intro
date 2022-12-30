@@ -22,3 +22,7 @@ data "oci_core_subnet" "this_subnet" {
 data "oci_core_vcn" "this_vcn" {
     vcn_id = data.oci_core_subnet.this_subnet.vcn_id
 }
+
+data "oci_secrets_secretbundle" "db_password" {
+    secret_id = var.password_ocid
+}

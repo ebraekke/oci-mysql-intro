@@ -1,9 +1,17 @@
 
 # variables 
-variable "subnet_ocid"          {}
+variable "subnet_ocid"          {
+    description = "ocid of (private) subnet to hos tInnoDB cluster"
+}
 
-# variables for all instances 
-variable "ssh_public_key"       {}
+variable "password_ocid" {
+    description = "ocid of secret in vault"  
+ } 
+
+variable "db_cores" {
+    description = "Number of Cores per InnoDB node, index of db_shapes_map below"
+    default = "1"
+}
 
 variable "db_shapes_map"  {
     type = map
