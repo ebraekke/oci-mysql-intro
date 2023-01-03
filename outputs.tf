@@ -13,3 +13,7 @@ output "vcn_name" {
 output "db_private_ip" {
   value = module.db.db_private_ip
 }
+
+output "db_ocid" {
+  value = module.db.db_ocid
+}

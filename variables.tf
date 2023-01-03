@@ -1,12 +1,16 @@
 
 # variables 
 variable "subnet_ocid"          {
-    description = "ocid of (private) subnet to hos tInnoDB cluster"
+    description = "ocid of (private) subnet to host InnoDB cluster"
 }
 
 variable "password_ocid" {
     description = "ocid of secret in vault"  
- } 
+}
+
+variable "vault_ocid" {
+    description = "ocid of vault in which to create secret"
+}
 
 variable "db_cores" {
     description = "Number of Cores per InnoDB node, index of db_shapes_map below"
