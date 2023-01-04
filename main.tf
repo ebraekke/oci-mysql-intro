@@ -1,4 +1,5 @@
 
+
 module "db" {
     source              = "./modules/db"
 
@@ -8,3 +9,13 @@ module "db" {
     subnet_ocid         = var.subnet_ocid
     shape_name          = var.db_shapes_map[var.db_cores]
 }
+
+module "conn" {
+    source              = "./modules/conn"
+
+    compartment_ocid    = var.compartment_ocid
+    connection_name     = "ha-innodb-conn"
+    mysql_db_ocid       = module.db.db_ocid
+    db_password_ocid    = var.password_ocid
+}
+
