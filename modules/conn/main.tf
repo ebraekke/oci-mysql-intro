@@ -6,6 +6,8 @@ resource "oci_database_tools_database_tools_connection" "mysql_connection" {
 
     connection_string = "mysql://${local.mysql_hostname}:${local.mysql_port}"
 
+    private_endpoint_id = var.priv_endpoint_ocid
+    
     related_resource {
         #Required
         entity_type = "MYSQLDBSYSTEM"

@@ -1,7 +1,7 @@
 # Input variables
 subnet_ocid         = "<ocid-of-theprivate-subnet-for-mysql-here>" 
 password_ocid       = "<ocid-of-your-password-secret-here>"
-vault_ocid          " "<ocid-ofyour-vault-for-secrets-here>"
+priv_endpoint_ocid  = "<ocid-of-private-endpoint-to-be-used-by-new-connection>"
 
 # Provider
 region              = "<region-identifier>"

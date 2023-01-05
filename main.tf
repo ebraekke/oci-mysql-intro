@@ -17,5 +17,6 @@ module "conn" {
     connection_name     = "ha-innodb-conn"
     mysql_db_ocid       = module.db.db_ocid
     db_password_ocid    = var.password_ocid
+    priv_endpoint_ocid  = var.priv_endpoint_ocid
 }
 

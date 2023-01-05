@@ -1,5 +1,5 @@
 
-# variables 
+# Variables 
 variable "subnet_ocid"          {
     description = "ocid of (private) subnet to host InnoDB cluster"
 }
@@ -8,8 +8,8 @@ variable "password_ocid" {
     description = "ocid of secret in vault"  
 }
 
-variable "vault_ocid" {
-    description = "ocid of vault in which to create secret"
+variable "priv_endpoint_ocid" {
+    description = "ocid of private endpoint in \"subnet_ocid\" to be used by new connection" 
 }
 
 variable "db_cores" {
