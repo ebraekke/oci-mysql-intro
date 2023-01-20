@@ -2,7 +2,7 @@
 
 # Intro 
 
-This is the first version of a terraform suite that creates a MySQL DB System (aka InnoDB CLuster) inside a VCN. 
+This is the first version of a terraform suite that creates a MySQL DB System (aka InnoDB Cluster) inside a VCN. 
 
 The created config is used by the repo `ebraekke/oci-powershell-modules`.
 
