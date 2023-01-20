@@ -42,7 +42,7 @@ variable "db_cores" {
 
 ## Calculated values
 
-The parameter value of ``db_cores` is used to select the appropriate shape.
+The parameter value of `db_cores` is used to select the appropriate shape.
 
 ```hcl
 variable "db_shapes_map"  {
