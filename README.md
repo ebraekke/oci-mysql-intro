@@ -1,25 +1,19 @@
-# oci-mysql-intro
+# ebraekke/oci-mysql-intro
 
-I have one Bastion servcie with private IP:
+# Intro 
 
-Bastion:
-10.0.0.49/32	All my MySQL ports via bastion
+This is the first version of a terraform suite that creates a MySQL DB System (aka InnoDB CLuster) inside a VCN. 
 
-Ports: 3306,33060,33061
+The created config is used by the repo `ebraekke/oci-powershell-modules`.
 
-I have one private endpoint with `Reverse connection source IPs` 
+TODO: Add more documentation. 
 
-Private Endpoint
-10.0.0.45/32	All my MySQL ports via private endpoint part1
-10.0.0.182/32	All my MySQL ports via private endpoint part2
-
-
-Ports: 3306,33060,33061
-
-# Usage
+## Usage
 
 Store config files in sub-dir `config/` it is ignored by git.
 
+```
 terraform plan --out=oci-mysql-intro.tfplan --var-file=config/vars_fra.tfvars
 
 terraform apply ....
+```
