@@ -8,7 +8,7 @@ private subnet in a VCN.
 It creates a HA config of a MySQL DB System as well as a corresponding connection object. 
 
 HA in this context means three nodes spread across three ADs (Availability Domains or Zone) if in a multi AD region.
-In the case of single AD region, the three nodes are spread across FDs Fault Domains -- technically, entirely separate cages inside a DC.   
+In the case of single AD region, the three nodes are spread across FDs (Fault Domains) -- technically, entirely separate cages inside a DC.   
 
 The recipe assumes a fairly basic network setup. 
 I use a default VCN created by the wizard. 
@@ -22,7 +22,6 @@ has been created in my public subnet. This means traffic through the Bastion is 
 ## Required input parameters 
 
 ```hcl
-# Variables 
 variable "subnet_ocid"          {
     description = "ocid of (private) subnet to host InnoDB cluster"
 }
@@ -41,7 +40,28 @@ variable "db_cores" {
 }
 ```
 
-## Default parameters 
+## Calculated values
+
+The parameter value of ``db_cores` is used to select the appropriate shape.
+
+```hcl
+variable "db_shapes_map"  {
+    type = map
+    default = {
+        "1"  = "MySQL.VM.Standard.E4.1.16GB"
+        "2"  = "MySQL.VM.Standard.E4.2.32GB"
+        "4"  = "MySQL.VM.Standard.E4.4.64GB"
+        "8"  = "MySQL.VM.Standard.E4.8.128GB"
+        "16" = "MySQL.VM.Standard.E4.16.256GB"
+        "24" = "MySQL.VM.Standard.E4.24.384GB"
+        "32" = "MySQL.VM.Standard.E4.32.512GB"
+        "48" = "MySQL.VM.Standard.E4.48.768GB"
+        "64" = "MySQL.VM.Standard.E4.64.1024GB"
+    }
+}
+```
+
+## Default parameters
 
 The following "default" parameters need to be provided to the oci terraform provider. 
 
@@ -53,6 +73,19 @@ variable "user_ocid"            {}
 variable "fingerprint"          {}
 variable "private_key_path"     {}
 ```
+
+## Outputs
+
+The created Connection resource contains all the information needed access the DB  system.
+
+```bash
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+conn_ocid = "ocid1.databasetoolsconnection.oc1.eu-frankfurt-1.<some-secret-string>"
+```
+
 
 ## Other 
 
