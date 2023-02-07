@@ -1,7 +1,5 @@
 # ebraekke/oci-mysql-intro
 
-# Intro 
-
 This is the first version of a terraform recipe that creates a MySQL DB System (aka InnoDB Cluster) inside a 
 private subnet in a VCN. 
 
@@ -18,6 +16,8 @@ I use a default VCN created by the wizard.
 
 In my reference network I only allow traffic on SSH (port 22) and MySQL (3306) from a Bastion's private IP that 
 has been created in my public subnet. This means traffic through the Bastion is the only traffic allowed into the network. 
+I addition I allow MySQL database traffic (3306) from the two addresses of a private endpoint (aka "Reverse connection source IPs")
+into the private subnet. This seems to be a prerequisite for making mysqlsh in CloudShell work.   
 
 ## Required input parameters 
 
@@ -32,11 +32,6 @@ variable "password_ocid" {
 
 variable "priv_endpoint_ocid" {
     description = "ocid of private endpoint in \"subnet_ocid\" to be used by new connection" 
-}
-
-variable "db_cores" {
-    description = "Number of Cores per InnoDB node, index of db_shapes_map below"
-    default = "1"
 }
 ```
 
