@@ -33,6 +33,10 @@ variable "password_ocid" {
 variable "priv_endpoint_ocid" {
     description = "ocid of private endpoint in \"subnet_ocid\" to be used by new connection" 
 }
+
+variable "compartment_ocid"     {
+    description = "ocid of compartment"
+}
 ```
 
 ## Calculated values
@@ -63,7 +67,6 @@ The following "default" parameters need to be provided to the oci terraform prov
 ```hcl
 variable "region"               { default = "eu-frankfurt-1"}
 variable "tenancy_ocid"         {}
-variable "compartment_ocid"     {}
 variable "user_ocid"            {}
 variable "fingerprint"          {}
 variable "private_key_path"     {}

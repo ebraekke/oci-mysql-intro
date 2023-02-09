@@ -12,6 +12,10 @@ variable "priv_endpoint_ocid" {
     description = "ocid of private endpoint in \"subnet_ocid\" to be used by new connection" 
 }
 
+variable "compartment_ocid"     {
+    description = "ocid of compartment"
+}
+
 variable "db_cores" {
     description = "Number of Cores per InnoDB node, index of db_shapes_map below"
     default = "1"
@@ -37,7 +41,6 @@ variable "db_shapes_map"  {
 ###########################################################################
 variable "region"               { default = "eu-frankfurt-1"}
 variable "tenancy_ocid"         {}
-variable "compartment_ocid"     {}
 variable "user_ocid"            {}
 variable "fingerprint"          {}
 variable "private_key_path"     {}
