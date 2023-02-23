@@ -66,7 +66,7 @@ variable "db_shapes_map"  {
 
 ## Default parameters
 
-The following "default" parameters need to be provided to the oci terraform provider. 
+The following "default" parameters need to be passed to the oci terraform provider.
 
 ```hcl
 variable "region"               { default = "eu-frankfurt-1"}
