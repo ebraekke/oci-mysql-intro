@@ -53,6 +53,7 @@ variable "db_shapes_map"  {
 ###########################################################################
 variable "region"               {}
 variable "oci_cli_profile"      { 
+    default = "nosefra"
     description = "name of oci cli profile used for session based auth"
 }
 variable "tenancy_ocid"         {}
