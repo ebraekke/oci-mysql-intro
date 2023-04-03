@@ -102,3 +102,32 @@ terraform plan --out=oci-mysql-intro.tfplan --var-file=config/vars_fra.tfvars
 
 terraform apply "oci-mysql-intro.tfplan"
 ```
+
+## Resource Manager
+
+### Create a release
+
+Perform these operations from the top level folder in repo.
+
+Remember to add Linux to lock file.
+```bash
+terraform providers lock -platform=linux_amd64
+```
+
+Create ZIP archive, add non-tracked file from config dir.
+```bash
+git archive --add-file config\provider.tf --format=zip HEAD -o .\config\test_rel.zip
+```
+
+### Create stack
+
+```bash
+$C = "ocid1.compartment.oc1..somehashlikestring"
+$config_source = "C:\Users\espenbr\GitHub\oci-mysql-intro\config\test_rel.zip"
+$variables_file = "C:/Users/espenbr/GitHub/oci-mysql-intro/config/vars_fra.json"
+$disp_name = "Demo of MySQL InnoDB stack"
+$desc = "InnoDB Cluster Creation from RM"
+$wait_spec="--wait-for-state=ACTIVE"
+
+oci resource-manager stack create --config-source=$config_source --display-name="$disp_name" --description="$desc" --variables=file://$variables_file -c $C --terraform-version=1.2.x $wait_spec
+```
