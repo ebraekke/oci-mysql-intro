@@ -20,6 +20,11 @@ variable "vault_ocid" {
     description = "ocid of vault"
 }
 
+variable "db_user_name" {
+    description = "name of admin db user"
+    default = "admin"
+}
+
 variable "password_ocid" {
     description = "ocid of secret in vault"  
 }
@@ -31,6 +36,11 @@ variable "priv_endpoint_ocid" {
 variable "db_cores" {
     description = "Number of Cores per InnoDB node, index of db_shapes_map below"
     default = "1"
+}
+
+variable "db_gb_storage" {
+    description = "Number GB storage for InnoDB"
+    default = "100"
 }
 
 variable "db_shapes_map"  {

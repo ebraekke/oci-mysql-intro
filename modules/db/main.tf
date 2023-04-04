@@ -3,7 +3,7 @@
 resource "oci_mysql_mysql_db_system" "innodb_cluster" {
     # Required
     admin_password      = base64decode(var.db_password_base64) 
-    admin_username      = "admin"
+    admin_username      = var.db_user_name
     availability_domain = var.avadom_name
     compartment_id      = var.compartment_ocid
 
@@ -16,10 +16,10 @@ resource "oci_mysql_mysql_db_system" "innodb_cluster" {
         window_start_time = "00:00:00.00Z"   # midnight UTC
     }
 
-    data_storage_size_in_gb = 100
-    description             = "Test InnoDB HA system"
-    display_name            = "InnoDB HA"
-    hostname_label          = "innodbha"
+    data_storage_size_in_gb = var.db_gb_storage
+    description             = var.db_name
+    display_name            = var.db_name
+    hostname_label          = var.db_name
     is_highly_available     = true
 
     maintenance {

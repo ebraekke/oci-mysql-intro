@@ -14,7 +14,7 @@ resource "oci_database_tools_database_tools_connection" "mysql_connection" {
         identifier  = var.mysql_db_ocid
     }
 
-    user_name = "admin"
+    user_name = var.db_user_name
     user_password {
         secret_id   = var.db_password_ocid
         value_type  = "SECRETID"
