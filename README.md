@@ -110,9 +110,9 @@ The created config can be used by the repo `ebraekke/oci-powershell-modules` whe
 Store config files in sub-dir `config/` it is ignored by git.
 
 ```bash
-terraform plan --out=oci-mysql-intro.tfplan --var-file=config/vars_fra.tfvars
+terraform plan --out=oci-mysql-intro.arn.tfplan --var-file=config/vars_arn.tfvars
 
-terraform apply "oci-mysql-intro.tfplan"
+terraform apply "oci-mysql-intro.arn.tfplan"
 ```
 
 ## Resource Manager
@@ -136,7 +136,7 @@ git archive --add-file config\provider.tf --format=zip HEAD -o .\config\test_rel
 ```bash
 $C = "ocid1.compartment.oc1..somehashlikestring"
 $config_source = "C:\Users\espenbr\GitHub\oci-mysql-intro\config\test_rel.zip"
-$variables_file = "C:/Users/espenbr/GitHub/oci-mysql-intro/config/vars_fra.json"
+$variables_file = "C:/Users/espenbr/GitHub/oci-mysql-intro/config/vars_arn.json"
 $disp_name = "Demo of MySQL InnoDB stack"
 $desc = "InnoDB Cluster Creation from RM"
 $wait_spec="--wait-for-state=ACTIVE"
