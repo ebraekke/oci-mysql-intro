@@ -26,8 +26,24 @@ Provide the name of the session created using `oci cli session autenticate` in t
 ## Required input parameters 
 
 ```hcl
+variable "set_name" {
+    description = "The name of or role of this set, used as base for naming, typicall test/dev/qa"
+}
+
+variable "compartment_ocid"     {
+    description = "ocid of compartment"
+}
+
+variable "vcn_ocid"             {
+    description = "ocid of VCN" 
+}
+
 variable "subnet_ocid"          {
     description = "ocid of (private) subnet to host InnoDB cluster"
+}
+
+variable "vault_ocid" {
+    description = "ocid of vault"
 }
 
 variable "password_ocid" {
@@ -35,11 +51,7 @@ variable "password_ocid" {
 }
 
 variable "priv_endpoint_ocid" {
-    description = "ocid of private endpoint in \"subnet_ocid\" to be used by new connection" 
-}
-
-variable "compartment_ocid"     {
-    description = "ocid of compartment"
+    description = "ocid of private endpoint in \"vcn_ocid\" to be used by new connection" 
 }
 ```
 
