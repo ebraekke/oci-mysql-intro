@@ -131,3 +131,51 @@ $wait_spec="--wait-for-state=ACTIVE"
 
 oci resource-manager stack create --config-source=$config_source --display-name="$disp_name" --description="$desc" --variables=file://$variables_file -c $C --terraform-version=1.2.x $wait_spec
 ```
+
+## List stacks in a compartment
+
+Pwsh style quoting of strings. 
+
+```bash
+oci resource-manager  stack list -c $C --output table --query "data [*].{`"ocid`":`"id`", `"name`":`"display-name`"}"
+<<
++----------------------------+------------------------------------------------------------------------------------------------+
+| name                       | ocid                                                                                           |
++----------------------------+------------------------------------------------------------------------------------------------+
+| Demo of MySQL InnoDB stack | ocid1.ormstack.oc1.eu-frankfurt-1.somehashlikestring                                           |
++----------------------------+------------------------------------------------------------------------------------------------+
+```
+
+### Create plan job
+
+```bash
+oci resource-manager job create-plan-job --stack-id $stack_ocid --wait-for-state=SUCCEEDED --wait-interval-seconds=10
+```
+
+### Submit apply job job based on plan run 
+
+Grab the job id from the output of the plan job.  
+
+```bash
+$plan_job_ocid = "ocid1.ormjob.oc1.eu-frankfurt-1.somehashlikestring"
+
+oci resource-manager job create-apply-job --execution-plan-strategy FROM_PLAN_JOB_ID --stack-id $stack_ocid --wait-for-state SUCCEEDED --wait-interval-seconds 10 --execution-plan-job-id $plan_job_ocid
+```
+
+### Create and run destroy job 
+
+```bash
+oci resource-manager job create-destroy-job --execution-plan-strategy AUTO_APPROVED  --stack-id $stack_ocid --wait-for-state SUCCEEDED --wait-interval-seconds 10
+```
+
+### Update variables 
+
+```bash
+oci resource-manager stack update --stack-id $stack_ocid --variables=file://C:/Users/espenbr/GitHub/oci-adb-intro/config/vars_fra.json
+```
+
+### Delete a specific stack 
+
+```bash
+oci resource-manager  stack delete --stack-id $stack_ocid --wait-for-state DELETED --wait-interval-seconds 10
+```

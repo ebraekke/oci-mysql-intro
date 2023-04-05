@@ -13,6 +13,8 @@ variableGroups:
       - region
       - user_ocid
       - oci_cli_profile
+      - db_shapes_map
+      - db_user_name
 
   - title: Naming of set
     visible: true
@@ -36,6 +38,7 @@ variableGroups:
     visible: true
     variables: 
       - db_cores
+      - db_gb_storage
 
 variables: 
   region:
@@ -47,6 +50,7 @@ variables:
 
   compartment_ocid:
     type: oci:identity:compartment:id
+    visible: false
     required: true
     title: Compartment
     description: Compartment where you want to create resources 
@@ -107,4 +111,11 @@ variables:
     visible: true
     required: true
     title: Cores
-    description: Number of Cores for each mdoe in InnoDB Cluster
+    description: Number of Cores for each node in the InnoDB Cluster
+
+  db_gb_storage:
+    type: number
+    visible: true
+    required: true
+    title: GB storage
+    description: DB storage in GB for each node in the InnoDB Cluster
