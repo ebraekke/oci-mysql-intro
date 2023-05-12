@@ -19,6 +19,13 @@ has been created in my public subnet. This means traffic through the Bastion is 
 I addition I allow MySQL database traffic (3306) from the two addresses of a private endpoint (aka "Reverse connection source IPs")
 into the private subnet. This seems to be a prerequisite for making mysqlsh in CloudShell work.   
 
+## Download the latest version of the Resource Manager ready stack from the releases section 
+
+Or you can just click the button below. 
+
+[![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/ebraekke/oci-mysql-intro/releases/download/v0.9.0-alpha.1/oci-mysql-intro_0.9.0.zip)
+
+
 ## Session based authentication 
 
 Provide the name of the session created using `oci cli session autenticate` in the variable `oci_cli_profile`. 
