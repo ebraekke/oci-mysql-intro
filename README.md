@@ -161,7 +161,7 @@ oci resource-manager  stack list -c $C --output table --query "data [*].{`"ocid`
 +----------------------------+------------------------------------------------------------------------------------------------+
 | name                       | ocid                                                                                           |
 +----------------------------+------------------------------------------------------------------------------------------------+
-| Demo of MySQL InnoDB stack | ocid1.ormstack.oc1.eu-frankfurt-1.somehashlikestring                                           |
+| Demo of MySQL InnoDB stack | ocid1.ormstack.oc1.eu-stockholm-1.somehashlikestring                                           |
 +----------------------------+------------------------------------------------------------------------------------------------+
 ```
 
@@ -176,7 +176,7 @@ oci resource-manager job create-plan-job --stack-id $stack_ocid --wait-for-state
 Grab the job id from the output of the plan job.  
 
 ```bash
-$plan_job_ocid = "ocid1.ormjob.oc1.eu-frankfurt-1.somehashlikestring"
+$plan_job_ocid = "ocid1.ormjob.oc1.eu-stockholm-1.somehashlikestring"
 
 oci resource-manager job create-apply-job --execution-plan-strategy FROM_PLAN_JOB_ID --stack-id $stack_ocid --wait-for-state SUCCEEDED --wait-interval-seconds 10 --execution-plan-job-id $plan_job_ocid
 ```
