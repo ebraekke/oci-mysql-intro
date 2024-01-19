@@ -62,10 +62,10 @@ variable "db_shapes_map"  {
 # Details related to account/identity (local_provider.tf) and book keeping
 ###########################################################################
 variable "region"               {
-    default = "eu-frankfurt-1"
+    default = "eu-stockholm-1"
 }
 variable "oci_cli_profile"      { 
-    default = "nosefra"
+    default = "nosearn"
     description = "name of oci cli profile used for session based auth"
 }
 variable "tenancy_ocid"         {}

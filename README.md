@@ -1,5 +1,7 @@
 # ebraekke/oci-mysql-intro
 
+TODO: Modify to reflect new repos that have been published. 
+
 This is the first version of a terraform recipe that creates a MySQL DB System (aka InnoDB Cluster) inside a 
 private subnet in a VCN. 
 
@@ -88,8 +90,9 @@ variable "db_shapes_map"  {
 The following "default" parameters need to be passed to the oci terraform provider.
 
 ```hcl
-variable "region"               { default = "eu-frankfurt-1"}
+variable "region"               { default = "eu-stockholm-1"}
 variable "oci_cli_profile"      { 
+    default = "nosearn"
     description = "name of oci cli profile used for session based auth"
 }
 variable "tenancy_ocid"         {}
@@ -104,7 +107,7 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-conn_ocid = "ocid1.databasetoolsconnection.oc1.eu-frankfurt-1.<some-secret-string>"
+conn_ocid = "ocid1.databasetoolsconnection.oc1.eu-stockholm-1.<some-secret-string>"
 ```
 
 
@@ -117,9 +120,9 @@ The created config can be used by the repo `ebraekke/oci-powershell-modules` whe
 Store config files in sub-dir `config/` it is ignored by git.
 
 ```bash
-terraform plan --out=oci-mysql-intro.arn.tfplan --var-file=config/vars_arn.tfvars
+terraform plan --out=oci-mysql-intro.tfplan --var-file=config/vars_arn.tfvars
 
-terraform apply "oci-mysql-intro.arn.tfplan"
+terraform apply "oci-mysql-intro.tfplan"
 ```
 
 ## Resource Manager
